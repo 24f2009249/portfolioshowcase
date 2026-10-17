@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer & Data Scientist Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 font-bold text-xl tracking-tight text-emerald-600 dark:text-emerald-400">
+                    <a href="#hero" class="flex items-center gap-2">
+                        <i class="fa-solid fa-code text-2xl"></i>
+                        <span>DevPortfolio</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#about" class="hover:text-emerald-500 px-3 py-2 text-sm font-medium transition-colors">About</a>
+                        <a href="#skills" class="hover:text-emerald-500 px-3 py-2 text-sm font-medium transition-colors">Skills</a>
+                        <a href="#projects" class="hover:text-emerald-500 px-3 py-2 text-sm font-medium transition-colors">Projects</a>
+                        <a href="#contact" class="hover:text-emerald-500 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Actions / Dark Mode Switch -->
+                <div class="flex items-center gap-4">
+                    <button id="theme-toggle" type="button" aria-label="Toggle Theme" class="p-2 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:ring-2 hover:ring-emerald-500 transition-all">
+                        <i id="theme-toggle-dark-icon" class="hidden fa-solid fa-moon"></i>
+                        <i id="theme-toggle-light-icon" class="hidden fa-solid fa-sun"></i>
+                    </button>
+
+                    <a href="#contact" class="hidden sm:inline-flex items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all">
+                        Get In Touch
+                    </a>
+
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-btn" type="button" class="p-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-emerald-500 focus:outline-none">
+                            <i class="fa-solid fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 px-4 pt-2 pb-4 space-y-1">
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800">About</a>
+            <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Skills</a>
+            <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Projects</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen pt-28 pb-16 flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 -z-10 opacity-30 dark:opacity-20">
+            <div class="absolute -top-40 -left-40 w-96 h-96 bg-emerald-400 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 right-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col md:flex-row items-center justify-between gap-12">
+            <div class="flex-1 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-sm font-medium">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Available for New Opportunities
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                    Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600">Data Science & Web Dev</span> Student
+                </h1>
+                <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl">
+                    Passionate about building scalable web applications and analyzing complex data to generate actionable insights. Combining full-stack engineering with modern machine learning pipelines.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center sm:justify-start">
+                    <a href="#projects" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium shadow-lg shadow-emerald-500/25 transition-all transform hover:-translate-y-0.5">
+                        View Projects
+                    </a>
+                    <a href="#contact" class="px-6 py-3 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-all">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex-1 flex justify-center relative">
+                <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 p-1 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                    <div class="w-full h-full bg-slate-900 rounded-xl flex flex-col items-center justify-center p-6 text-center">
+                        <div class="w-24 h-24 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-4xl mb-4">
+                            <i class="fa-solid fa-user-astronaut"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Full-Stack & ML</h3>
+                        <p class="text-sm text-slate-400 mt-2">IIT Madras Data Science Student</p>
+                        <div class="flex gap-3 mt-4 text-slate-400">
+                            <a href="#" class="hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
+                            <a href="#" class="hover:text-emerald-400 transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                            <a href="#" class="hover:text-emerald-400 transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-100/50 dark:bg-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight text-emerald-600 dark:text-emerald-400">About Me</h2>
+                <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+                    Driven by curiosity and a passion for technology, I blend software engineering principles with data science to solve real-world problems.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Education</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">
+                        Pursuing Data Science and Applications at IIT Madras. Focused on algorithms, machine learning models, statistical analysis, and system engineering.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Web Engineering</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">
+                        Experienced in modern frontend frameworks, responsive layout techniques, API integration, and full-stack development using Node.js & modern JavaScript.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Data Analytics</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">
+                        Proficient in Python, SQL, Pandas, NumPy, and Scikit-Learn to perform end-to-end data pipelines, exploratory analytics, and predictive modeling.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight text-emerald-600 dark:text-emerald-400">Technical Skills</h2>
+                <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+                    A snapshot of the tools, languages, and frameworks I use regularly.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Skill Group 1 -->
+                <div class="glass-card p-6 rounded-2xl space-y-4">
+                    <h3 class="text-xl font-bold border-b pb-2 border-slate-200 dark:border-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-laptop-code text-emerald-500"></i> Web Development
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-1">
+                                <span>HTML5 / CSS3 / Tailwind CSS</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-1">
+                                <span>JavaScript (ES6+) / TypeScript</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-1">
+                                <span>React.js / Vue.js</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-2.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Group 2 -->
+                <div class="glass-card p-6 rounded-2xl space-y-4">
+                    <h3 class="text-xl font-bold border-b pb-2 border-slate-200 dark:border-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-database text-emerald-500"></i> Data Science & Backend
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-1">
+                                <span>Python (Pandas, NumPy, Scikit-Learn)</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-2.5 rounded-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-1">
+                                <span>SQL & Database Design</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-2.5 rounded-full" style="width: 88%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-1">
+                                <span>Git & CI/CD Workflows</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-2.5 rounded-full" style="width: 82%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-slate-100/50 dark:bg-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold tracking-tight text-emerald-600 dark:text-emerald-400">Featured Projects</h2>
+                <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+                    Explore recent work in data science analytics, interactive tools, and web engineering.
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex justify-center gap-2 mb-10 flex-wrap">
+                <button class="filter-btn active px-4 py-2 rounded-lg bg-emerald-600 text-white font-medium text-sm transition-all" data-filter="all">All</button>
+                <button class="filter-btn px-4 py-2 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600 font-medium text-sm transition-all" data-filter="datascience">Data Science</button>
+                <button class="filter-btn px-4 py-2 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600 font-medium text-sm transition-all" data-filter="web">Web Dev</button>
+            </div>
+
+            <!-- Project Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all" data-category="datascience">
+                    <div class="h-48 bg-slate-800 relative flex items-center justify-center p-6 text-white">
+                        <i class="fa-solid fa-chart-pie text-6xl text-emerald-400 opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Data Science</span>
+                        <h3 class="text-xl font-bold mt-1 mb-2">Predictive Customer Analytics</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                            Machine learning pipeline predicting user churn using XGBoost and Pandas with actionable visual metrics.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 text-xs rounded">Python</span>
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 text-xs rounded">Scikit-Learn</span>
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 text-xs rounded">Pandas</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">
+                            View Details <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all" data-category="web">
+                    <div class="h-48 bg-slate-800 relative flex items-center justify-center p-6 text-white">
+                        <i class="fa-solid fa-layer-group text-6xl text-teal-400 opacity-80"></i>
+                    </div>
+                    <p class="hidden">Full-stack web dashboard application built with modern reactive web elements.</p>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider">Web Dev</span>
+                        <h3 class="text-xl font-bold mt-1 mb-2">Interactive Dashboard</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                            Real-time data visualization dashboard featuring Tailwind CSS and modern reactive components.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 text-xs rounded">JavaScript</span>
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 text-xs rounded">Tailwind CSS</span>
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 text-xs rounded">Chart.js</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">
+                            View Details <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all" data-category="datascience">
+                    <div class="h-48 bg-slate-800 relative flex items-center justify-center p-6 text-white">
+                        <i class="fa-solid fa-brain text-6xl text-emerald-400 opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Data Science</span>
+                        <h3 class="text-xl font-bold mt-1 mb-2">NLP Sentiment Analyzer</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                            Natural language processing tool evaluating text sentiment for product feedback analysis.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 text-xs rounded">Python</span>
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 text-xs rounded">NLTK</span>
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 text-xs rounded">Flask</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">
+                            View Details <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto glass-card rounded-3xl p-8 sm:p-12 shadow-lg">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-emerald-600 dark:text-emerald-400">Get In Touch</h2>
+                    <p class="mt-2 text-slate-600 dark:text-slate-300">Have a project idea, question, or opportunity? Feel free to send a message!</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Contact Details -->
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 rounded-xl">
+                                <i class="fa-solid fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-sm text-slate-500 dark:text-slate-400">Email</h4>
+                                <p class="font-medium text-slate-800 dark:text-slate-200">
+                                    <!--email_off-->24f2009249@ds.study.iitm.ac.in<!--/email_off-->
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 rounded-xl">
+                                <i class="fa-solid fa-location-dot text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-sm text-slate-500 dark:text-slate-400">Location</h4>
+                                <p class="font-medium text-slate-800 dark:text-slate-200">India</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 rounded-xl">
+                                <i class="fa-solid fa-graduation-cap text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-sm text-slate-500 dark:text-slate-400">Institution</h4>
+                                <p class="font-medium text-slate-800 dark:text-slate-200">IIT Madras (Data Science)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <form id="contact-form" class="space-y-4" onsubmit="handleFormSubmit(event)">
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Name</label>
+                            <input type="text" required class="w-full px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 focus:ring-2 focus:ring-emerald-500 outline-none transition-all" placeholder="Your Name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Email</label>
+                            <input type="email" required class="w-full px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 focus:ring-2 focus:ring-emerald-500 outline-none transition-all" placeholder="yourname@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Message</label>
+                            <textarea rows="4" required class="w-full px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 focus:ring-2 focus:ring-emerald-500 outline-none transition-all" placeholder="Your message..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium shadow-md transition-all">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 py-8 bg-slate-100 dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <p class="text-sm text-slate-500 dark:text-slate-400">
+                &copy; 2026 Developer Portfolio. All rights reserved.
+            </p>
+            <div class="text-sm text-slate-500 dark:text-slate-400">
+                Contact: <!--email_off-->24f2009249@ds.study.iitm.ac.in<!--/email_off-->
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Dark Mode Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            lightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            darkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
+
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Project Filtering Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-emerald-600', 'text-white', 'active');
+                    b.classList.add('bg-slate-200', 'dark:bg-slate-700', 'text-slate-700', 'dark:text-slate-300');
+                });
+                btn.classList.add('bg-emerald-600', 'text-white', 'active');
+                btn.classList.remove('bg-slate-200', 'dark:bg-slate-700', 'text-slate-700', 'dark:text-slate-300');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Form Submission Handling
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
